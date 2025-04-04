@@ -32,6 +32,27 @@ public class ArraysAndStreams2 {
                .filter(s -> s.compareToIgnoreCase("n") < 0)
                .sorted(String.CASE_INSENSITIVE_ORDER.reversed())
                .collect(Collectors.toList()));
+
+      //Module 5 Lab work
+
+
+      //Task 1: Use a stream to filter strings that start with a vowel (case-insensitive). Collect and display these strings.
+      System.out.printf("strings that start with a vowel (case-insensitive): %s%n",
+              Arrays.stream(strings)
+                      .filter(s->s.matches("(?i)^[aeiou].*"))
+                      .collect(Collectors.toList()));
+
+      //Task 2: Use a stream to concatenate all the strings into a single string, separated by a comma, and display the result.
+      String combined = Arrays.stream(strings)
+              .collect(Collectors.joining(", "));
+
+      System.out.printf("combined string: %s%n", combined);
+
+      //Task 3: Use a stream to count the number of strings that contain more than 5 characters (case-insensitive) and display the count.
+      long count = Arrays.stream(strings)
+              .filter(s->s.length() > 5)
+              .count();
+      System.out.printf("number of strings that contain more than 5 characters (case-insensitive): %d%n", count);
    }
 } 
 
